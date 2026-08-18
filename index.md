@@ -5,7 +5,7 @@ hide: true
 show_reading_time: false
 ---
 
-Hi! My name is [William Spurgiesz]
+Hi! My name is William Spurgiesz
 
 ### Development Environment
 
