@@ -105,11 +105,12 @@ Here is what I did at those places
 - I have played basketball for most of my life and am pretty serious about it, training 4-5 times a day. I also love to read, watch tv, and listen to music. A fun fact about me is I play 6 instruments. 
 
 <comment>
-Photos of my life, scroll to the left for more ...
+Photos of my life, scroll to the right for more ...
 </comment>
 <div class="image-gallery">
   <img src="{{site.baseurl}}/images/about/Bruno.png" alt="Bruno">
   <img src="{{site.baseurl}}/images/about/Interview.png" alt="Interview">
     <img src="{{site.baseurl}}/images/about/views.png" alt="Views">
+
   
 </div>
