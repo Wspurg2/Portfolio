@@ -109,10 +109,12 @@ Photos of my life, scroll to the right for more ...
 </comment>
 <div class="image-gallery">
   <img src="{{site.baseurl}}/images/about/Bruno.png" alt="Bruno">
+  <img src="{{site.baseurl}}/images/about/views.png" alt="Views">
+  <img src="{{site.baseurl}}/images/about/Interview.png" alt="Interview">
     <img src="{{site.baseurl}}/images/about/josh.png" alt="Josh">
     <img src="{{site.baseurl}}/images/about/dad.png" alt="Dad">
-  <img src="{{site.baseurl}}/images/about/Interview.png" alt="Interview">
-    <img src="{{site.baseurl}}/images/about/views.png" alt="Views">
+
+
     
   
 </div>
