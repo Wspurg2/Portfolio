@@ -7,9 +7,7 @@ PYTHON := venv/bin/python3
 SHELL = /bin/bash -c
 .SHELLFLAGS = -e
 
-NOTEBOOK_FILES := $(shell find _notebooks -name '*.ipynb')
 DESTINATION_DIRECTORY = _posts
-MARKDOWN_FILES := $(patsubst _notebooks/%.ipynb,$(DESTINATION_DIRECTORY)/%_IPYNB_2_.md,$(NOTEBOOK_FILES))
 
 ###########################################
 # Project Selection Logic
@@ -265,9 +263,7 @@ clean-courses:
 	@$(PYTHON) scripts/split_multi_course_files.py clean
 
 # Notebook and DOCX conversion
-convert: $(MARKDOWN_FILES) convert-docx
-$(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
-	@mkdir -p $(@D)
+convert: convert-docx
 	@$(PYTHON) -c "from scripts.convert_notebooks import convert_notebooks; convert_notebooks()"
 
 # Single notebook conversion (faster for development)
