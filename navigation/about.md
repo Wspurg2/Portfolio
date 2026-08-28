@@ -58,7 +58,14 @@ Flags are made using Wikipedia images
     var container = document.getElementById("grid_container"); // This container connects to the HTML div
 
     // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
+    import java.util.LinkedHashMap;
+import java.util.Map;
 
+public class Flags {
+    public static void main(String[] args) {
+        Map<String, String> flags = new LinkedHashMap<>();
+ flags.put("English", "🇺🇸");
+ flags.put("Japanese", "🇯🇵");
     // 3a. Consider how to update style count for size of container
     // The grid-template-columns has been defined as dynamic with auto-fill and minmax
 
@@ -104,14 +111,7 @@ Here is what I did at those places
 - My family is pretty big and it has 6 people. Those 6 are my mom, dad and I, my 3 brothers, and last my sister. All of my siblings are older than me.
 - I have played basketball for most of my life and am pretty serious about it, training 4-5 times a day. I also love to read, watch tv, and listen to music. A fun fact about me is I play 6 instruments. 
 - Here are some of my favorite music albums!
-
-<div class="image-gallery">
-
-    <img src="{{site.baseurl}}/images/about/Interview.png" alt="Interview">
-        <img src="{{site.baseurl}}/images/about/josh.png" alt="Josh">
-        <img src="{{site.baseurl}}/images/about/dad.png" alt="Dad">
-</div>
-
+ 
 <img src="{{site.baseurl}}/images/about/Bruno.png" alt="Bruno">
 <img src="{{site.baseurl}}/images/about/views.png" alt="Views">
 
@@ -119,3 +119,13 @@ Here is what I did at those places
 Photos of my family, scroll to the right for more ...
 
 </comment>
+<div class="image-gallery">
+
+  <img src="{{site.baseurl}}/images/about/Interview.png" alt="Interview">
+    <img src="{{site.baseurl}}/images/about/josh.png" alt="Josh">
+    <img src="{{site.baseurl}}/images/about/dad.png" alt="Dad">
+
+
+    
+  
+</div>
