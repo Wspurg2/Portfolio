@@ -56,6 +56,17 @@ Flags are made using Wikipedia images
 <script>
     // 1. Make a connection to the HTML container defined in the HTML div
     var container = document.getElementById("grid_container"); // This container connects to the HTML div
+    // 1. Make a connection to the HTML container defined in the HTML div
+    var container = document.getElementById("grid_container");
+
+    // 2. List of locations to exclude (match against flag filename or description)
+    var excluded_locations = ["oregon", "england", "hawaii"];
+
+    // 3. Build grid items inside of our container for each row of data
+    for (const location of living_in_the_world) {
+
+        // Skip this location if it matches one of the excluded names
+        var isExcluded = excluded
 
     // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
 
