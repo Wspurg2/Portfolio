@@ -54,27 +54,34 @@ Flags are made using Wikipedia images
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
-    // 1. Make a connection to the HTML container defined in the HTML div
+    // Connect to the HTML container and define the flag data for the grid.
     var container = document.getElementById("grid_container");
+    var http_source = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+    var living_in_the_world = [
+        {
+            flag: "Flag_of_California.svg",
+            description: "California",
+            greeting: "Home"
+        },
+        {
+            flag: "Flag_of_Arizona.svg",
+            description: "Arizona",
+            greeting: "Home"
+        }
+    ];
 
     // 2. List of locations to exclude (match against flag filename or description)
     var excluded_locations = ["oregon", "england", "hawaii"];
 
-    // 3. Build grid items inside of our container for each row of data
+    // Build grid items inside of the container for each location.
     for (const location of living_in_the_world) {
+        var locationText = (location.flag + " " + location.description).toLowerCase();
+        if (excluded_locations.some(function (excluded) {
+            return locationText.includes(excluded);
+        })) {
+            continue;
+        }
 
-        // Skip this location if it matches one of the excluded names
-        var isExcluded = excluded
-
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
-
-    // 3b. Build grid items inside of our container for each row of data
-    for (const location of living_in_the_world) {
         // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
         gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
