@@ -99,17 +99,17 @@ Here is what I did at those places
 
 ### Sports and Hobbies
 
+
 - I have been told that I am welsh, scottish, and polish. 
 - My family is pretty big and it has 6 people. Those 6 are my mom, dad and I, my 3 brothers, and last my sister. All of my siblings are older than me.
 - I have played basketball for most of my life and am pretty serious about it, training 4-5 times a day. I also love to read, watch tv, and listen to music. A fun fact about me is I play 6 instruments. 
 - Here are some of my favorite music albums!
-
+<img src="{{site.baseurl}}/images/about/Bruno.png" alt="Bruno">
+<img src="{{site.baseurl}}/images/about/views.png" alt="Views">
 
 <comment>
 Photos of my family, scroll to the right for more ...
-<img src="{{site.baseurl}}/images/about/Bruno.png" alt="Bruno">
-  <img src="{{site.baseurl}}/images/about/views.png" alt="Views">
-  
+
 </comment>
 <div class="image-gallery">
 
