@@ -1,5 +1,6 @@
-OST ?= localhost
+HOST ?= localhost
 PORT ?= 4500
+BROWSER ?= open
 LOG_FILE = /tmp/jekyll$(PORT).log
 PYTHON := venv/bin/python3
 
@@ -24,7 +25,7 @@ DEV_PROJECTS := $(shell grep -v '^\#' $(PROJECT_FILE) 2>/dev/null | grep -v '^$$
 
 # Known top-level targets (add to this if needed)
 KNOWN_TARGETS := \
-	default dev serve build clean stop reload refresh help \
+	default dev serve local localhost build clean stop reload refresh help \
 	serve-minima serve-cayman serve-yat serve-so-simple serve-hydejack \
 	build-minima build-cayman build-yat build-so-simple \
 	convert convert-docx convert-docx-config convert-single convert-registered-notebooks \
@@ -247,6 +248,11 @@ build-current: clean convert split-courses
 
 # General serve/build for whatever is current
 serve: serve-current
+
+# Start the local server and open it in the default browser
+local localhost: serve-current
+	@$(BROWSER) "http://$(HOST):$(PORT)"
+
 build: build-current
 
 # Multi-course file splitting
@@ -531,6 +537,7 @@ help:
 	@echo "  make dev <proj>   - Dev mode + include additional project(s), replace <proj> with project: make dev gamify"
 	@echo "  make dev p1 p2    - Include multiple projects"
 	@echo "  make serve        - Convert and serve (no auto-convert watching)"
+	@echo "  make local        - Start the server and open http://localhost:4500"
 	@echo "  make build        - Convert and build _site/ for deployment (no server)"
 	@echo "  make stop         - Stop server and logging"
 	@echo "  make reload       - Stop and restart server"
