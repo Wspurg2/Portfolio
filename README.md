@@ -100,14 +100,23 @@ cd portfolio
 
 Add Open Coding Society as an `upstream` remote once, then periodically merge updates.
 
+If your repository was created with **Use this template**, the first merge can
+fail with `fatal: refusing to merge unrelated histories` because the template
+repository starts with a separate root commit. In that case, allow unrelated
+histories for the first sync only:
+
 ```bash
 # from your repository root
 git remote add upstream https://github.com/open-coding-society/portfolio.git
 git remote -v
 
-# get latest template updates
+# first sync for template-created repositories
 git fetch upstream
 git checkout main
+git merge upstream/main --allow-unrelated-histories
+
+# routine sync after the first merge
+git fetch upstream
 git merge upstream/main
 
 # publish merged updates to your repo
