@@ -637,10 +637,9 @@ def extract_front_matter(notebook_file, cell):
 
 
 def get_relative_output_path(notebook_file):
-    """Map a notebook path to the mirrored markdown output path under _posts."""
-    relative_path = os.path.relpath(notebook_file, notebook_directory)
-
-    markdown_filename = relative_path.replace(".ipynb", "_IPYNB_2_.md")
+    """Save converted notebooks directly inside _posts."""
+    markdown_filename = os.path.basename(notebook_file)
+    markdown_filename = markdown_filename.replace(".ipynb", "_IPYNB_2_.md")
 
     return os.path.join(destination_directory, markdown_filename)
 
