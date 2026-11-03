@@ -11,10 +11,10 @@ import concurrent.futures, traceback, re
 from dataclasses import dataclass, asdict
 from typing import Any, Optional
 
-if __name__ == "__main__":
-    from progress_bar import ProgressBar
-else:
+if __package__:
     from scripts.progress_bar import ProgressBar
+else:
+    from progress_bar import ProgressBar
 
 
 ###########################################
