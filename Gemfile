@@ -41,6 +41,8 @@ gem "jekyll", "~> 3.9.0"
 gem "jekyll-theme-minima"
 gem "jekyll-remote-theme"
 gem "jekyll-include-cache"
+gem "jekyll-seo-tag"
+gem "jekyll-sitemap"
 gem "kramdown-parser-gfm"
 
 # ============================================================================

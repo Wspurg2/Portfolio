@@ -644,6 +644,13 @@ def get_relative_output_path(notebook_file):
     return os.path.join(destination_directory, markdown_filename)
 
 
+def add_notebook_metadata(front_matter, notebook_file):
+    """Add the source path used by notebook links on rendered pages."""
+    front_matter.setdefault("branch", "main")
+    front_matter["nb_path"] = notebook_file.replace(os.sep, "/")
+    return front_matter
+
+
 def fix_js_code_blocks(markdown):
     # This regex finds ```python blocks starting with %%js and replaces with ```javascript
     # but keeps the %%js line for developers to see
@@ -653,6 +660,14 @@ def fix_js_code_blocks(markdown):
     pattern2 = re.compile(r"```python\r?\n%%js\r?\n", re.MULTILINE)
     markdown = pattern2.sub("```javascript\n%%js\n", markdown)
     return markdown
+
+
+def escape_liquid_delimiters(markdown):
+    """Keep template-like delimiters in notebook examples from being parsed."""
+    markdown = markdown.replace("{{", "\0LIQUID_OPEN\0")
+    markdown = markdown.replace("{%", "\0LIQUID_TAG\0")
+    markdown = markdown.replace("\0LIQUID_OPEN\0", "{% raw %}{{{% endraw %}")
+    return markdown.replace("\0LIQUID_TAG\0", "{% raw %}{%{% endraw %}")
 
 
 def classify_custom_cell_type(cell) -> Optional[str]:
@@ -1045,6 +1060,8 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
     with open(notebook_file, "r", encoding="utf-8") as file:
         notebook = nbformat.read(file, as_version=nbformat.NO_CONVERT)
         front_matter = extract_front_matter(notebook_file, notebook.cells[0])
+        front_matter.setdefault("render_with_liquid", False)
+        front_matter = add_notebook_metadata(front_matter, notebook_file)
         
         # Get permalink for runner_id generation
         permalink = front_matter.get('permalink', '')
@@ -1062,10 +1079,14 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         
         # Inject code-runner includes (and submit buttons if challenge_submit is enabled)
         markdown = inject_code_runners(markdown, notebook, front_matter)
+        markdown = escape_liquid_delimiters(markdown)
         
         front_matter_content = (
             "---\n"
-            + "\n".join(f"{key}: {value}" for key, value in front_matter.items())
+            + "\n".join(
+                f"{key}: '{value}'" if key == "nb_path" else f"{key}: {value}"
+                for key, value in front_matter.items()
+            )
             + "\n---\n\n"
         )
         markdown_with_front_matter = front_matter_content + markdown

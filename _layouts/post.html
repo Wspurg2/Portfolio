@@ -2,6 +2,14 @@
 layout: opencs
 ---
 
+{% if page.nb_path %}
+<div class="notebook-source-link" style="margin: 1rem 0;">
+  <a href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}/blob/{{ page.branch | default: 'main' }}/{{ page.nb_path }}" target="_blank" rel="noopener">
+    View source notebook on GitHub
+  </a>
+</div>
+{% endif %}
+
 {% comment %}
 Check if this is a course lesson and determine which course context to use
 {% endcomment %}

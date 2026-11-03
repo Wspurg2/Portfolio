@@ -19,6 +19,7 @@ description: "Class of 2029"
 owner_name: William Spurgiesz
 github_username: Wspurg2
 github_repo: "Portfolio" 
+url: "https://wspurg2.github.io"
 baseurl: "/Portfolio" 
 future: true
 
@@ -51,6 +52,8 @@ remote_theme: jekyll/minima
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Minima-specific settings (applicable to Minima v3 and above only)
 # -----------------------------------------------------------------
